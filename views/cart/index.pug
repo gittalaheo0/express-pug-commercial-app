@@ -1,0 +1,25 @@
+extends ../../layout/common.pug
+block content
+  - var num = 0
+  .cart
+    p.cart_title Your Cat
+      if listProductAdded.length == 0
+        p.cart_title Please chosse your cat!!
+    ul.cart_list
+      each product in listProductAdded
+        li.cart_list_item
+          .cart_list_item_nth #{num+1}
+          .cart_list_item_img
+            img(src=`http://lorempixel.com/300/${300+num++}/cats`)
+          .cart_list_item_name #{product.name}
+          .cart_list_item_price Price: #{Math.round(product.price*(1-product.salePricePercent*0.01))}đ
+          .cart_list_item_quantity Quantity: #{product.quantity}
+          .cart_list_item_remove
+            a(href=`/cart/remove/${product.id}`)
+              img(src="/image/quit.png")
+      li.cart_list_item_total
+        .cart_list_item_total_title Total
+        .cart_list_item_total_price Bill: #{totalPrice.price}
+        .cart_list_item_total_quantity Quantity: #{totalPrice.quantity}
+        a.cart_list_item_total_submit(href="#") BUY NOW
+

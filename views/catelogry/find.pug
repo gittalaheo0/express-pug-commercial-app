@@ -1,0 +1,31 @@
+extends ../../layout/common.pug
+block content 
+  link(rel='stylesheet' href='http://localhost:3000/style/style.css')
+  - var num = 1;
+  .product_actionBar(style="padding: 0 2rem; box-sizing: border-box; height: 6rem")
+    .product_actionBar_search
+      form(action='/catelogry/search', method='GET')
+        input(type='text', placeholder='Search', name='q')
+        button
+          | FIND
+
+  section.product(id="productSBestSeller")
+    .product_intro
+      .product_intro_title Result
+    .product_all
+      each item in productData
+        a(href=`/catelogry/product/${item.id}`)
+          .product_all_item
+            img(src=`http://lorempixel.com/300/${300+num++}/cats` alt='')
+            p.product_all_item_name #{item.name} 
+            .product_all_item_pricebox
+              if item.salePricePercent==0
+                p.product_all_item_price #{item.price}đ
+                p -
+              if item.salePricePercent!==0
+                p.product_all_item_price(style="text-decoration:  line-through") #{item.price}đ
+                p -
+                p.product_all_item_price_discount #{Math.round(item.price*(1-item.salePricePercent*0.01))}đ
+              .product_all_item_decoration
+                span.product_all_item_decoration_discount -#{item.salePricePercent}%
+  

@@ -1,0 +1,23 @@
+{
+  "name": "Commercial-app-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "sass": "sass style.scss assets/style/style.css --watch",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "mongoose": "^5.10.3",
+    "node-sass": "^4.14.1",
+    "pug": "^3.0.0",
+    "sass": "^1.26.10"
+  }
+}

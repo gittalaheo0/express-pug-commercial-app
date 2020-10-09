@@ -1,0 +1,52 @@
+extends ../layout/common.pug
+block content 
+  link(rel='stylesheet' href='http://localhost:3000/style/style.css')
+  - var num = 1;
+  .product_actionBar(style="padding: 0 2rem; box-sizing: border-box; height: 6rem")
+    .product_actionBar_search
+      form(action='/catelogry/search', method='GET')
+        input(type='text', placeholder='Search', name='q')
+        button
+          | FIND
+
+  section.product(id="productFeature")
+    .product_intro
+      .product_intro_title BEST FEATURE
+    .product_feature
+      .product_feature_slide
+        each item in productFeature
+          div.view
+            div.view_img
+              img(src=`http://lorempixel.com/300/${Math.round(Math.random()*10)+300}/cats`)
+            div.view_infor
+              p.view_infor_name #{item.name}
+              p.view_infor_price Price: 
+              p.view_infor_priceOld  #{item.price}
+              p.view_infor_priceSale  -#{Math.round(item.price*(1-item.salePricePercent*0.01))}đ
+              p.view_infor_describe Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              a(href='/cart/add/' + item.id).view_infor_add Add To Card
+      .product_feature_remote
+        .product_feature_remote_item
+        .product_feature_remote_item
+        .product_feature_remote_item
+        .product_feature_remote_item
+  section.product(id="productSBestSeller")
+    .product_intro
+      .product_intro_title Top SALE
+    .product_all
+      each item in productData
+        a(href=`/catelogry/product/${item.id}`)
+          .product_all_item
+            img(src=`http://lorempixel.com/300/${300+num++}/cats` alt='')
+            p.product_all_item_name #{item.name} 
+            .product_all_item_pricebox
+              if item.salePricePercent==0
+                p.product_all_item_price #{item.price}đ
+                p -
+              if item.salePricePercent!==0
+                p.product_all_item_price(style="text-decoration:  line-through") #{item.price}đ
+                p -
+                p.product_all_item_price_discount #{Math.round(item.price*(1-item.salePricePercent*0.01))}đ
+              .product_all_item_decoration
+                span.product_all_item_decoration_discount -#{item.salePricePercent}%
+  

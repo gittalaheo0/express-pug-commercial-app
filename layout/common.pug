@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title
+  link(rel='stylesheet' href='http://localhost:3000/style/style.css')
+  link(href='https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap' rel='stylesheet')
+header
+  nav.navbar
+    .navbar_logo
+      span
+        | KARO
+    ul.navbar_menu
+      li.navbar_menu_item
+        a(href='/catelogry') HOME
+      li.navbar_menu_item#sidebar
+        a(href='#') PRODUCT
+      li.navbar_menu_item
+        a(href='#') blank
+      li.navbar_menu_item
+        a(href='#') blank
+      li.navbar_menu_item
+        a(href='#') blank
+    .navbar_cart
+      a(href="/cart")
+        img(src="/image/bag.png")
+        span#quantityInCart 1
+main
+  nav.sidebar_menu
+    span#show_navbar
+      i
+      i
+      i
+    p.sidebar_menu_title Catelogry
+    ul.sidebar_menu_product
+      li.sidebar_menu_product_item
+        a(href='/catelogry/nikeProduct') Gi&agrave;y Nike
+      li.sidebar_menu_product_item
+        a(href='/catelogry/coupleProduct') Gi&agrave;y &dstrok;&ocirc;i
+      li.sidebar_menu_product_item
+        a(href='/catelogry/manProduct') Gi&agrave;y Nam
+      li.sidebar_menu_product_item
+        a(href='/catelogry/womanProduct') Gi&agrave;y N&#x1EEF;
+      li.sidebar_menu_product_item
+        a(href='/catelogry/fashionProduct') Gi&agrave;y Th&#x1EDD;i Trang
+block content
+if typeProduct
+  span.product_all_more(onclick=`sendInfor("${typeProduct}")`) See More 
+
+script(type="text/javascript" src="http://localhost:3000/animation/animation.js")
+script(type="text/javascript" src="http://localhost:3000/animation/soft.js")
+script(type="text/javascript" src="http://localhost:3000/js/ajax.js")
+script(type="text/javascript" src="http://localhost:3000/js/cart.js")
+script(type="text/javascript" src="http://localhost:3000/js/slide.js")
